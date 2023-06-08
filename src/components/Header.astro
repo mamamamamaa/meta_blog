@@ -1,23 +1,13 @@
 ---
-import logo from "/logo.svg";
-import search from "/search.svg";
+import Logo from "./Logo.astro";
+import { SearchBar } from "./SearchBar/SearchBar";
+import { ThemeSwithcer } from "./ThemeSwithcer/ThemeSwithcer";
 ---
 
 <header class="py-8 flex items-center justify-between">
-  <img src={logo} alt="logo icon" />
+  <Logo />
   <div class="flex items-center gap-10">
-    <label class="relative cursor-pointer hover:shadow duration-200">
-      <img
-        src={search}
-        alt="search icon"
-        class="w-4 h-4 absolute top-1/2 translate-y-[-50%] right-2"
-      />
-      <input
-        type="text"
-        placeholder="Search"
-        class="w-40 rounded bg-secondary/100 py-2 pl-4 pr-9 cursor-pointer focus:outline-none"
-      />
-    </label>
-    <input type="checkbox" />
+    <SearchBar client:load />
+    <ThemeSwithcer client:load />
   </div>
 </header>

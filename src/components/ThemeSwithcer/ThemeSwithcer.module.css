@@ -1,0 +1,31 @@
+.box {
+    @apply relative flex items-center w-12 h-7 rounded-full cursor-pointer hover:shadow duration-200;
+}
+
+.lightBoxBg {
+    @apply bg-secondary/100;
+}
+
+.darkBoxBg {
+    @apply bg-accent;
+}
+
+.circle{
+    @apply absolute rounded-full w-6 h-6 bg-white duration-200;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sunCircle {
+    @apply left-[2px] duration-200;
+    background-image: url("/sunny.svg");
+}
+
+.moonCircle {
+    @apply right-[2px] duration-200;
+    background-image: url("/moon.svg");
+}
+
+.checkbox {
+    @apply invisible w-12 h-7;
+}
