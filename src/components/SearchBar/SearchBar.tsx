@@ -11,7 +11,7 @@ export const SearchBar = () => {
       <input
         type="text"
         placeholder="Search"
-        class="w-40 rounded bg-secondary/100 dark:bg-semidark py-2 pl-4 pr-9 cursor-pointer focus:outline-none"
+        class="w-40 rounded bg-secondary/100 dark:bg-semidark dark:text-white py-2 pl-4 pr-9 cursor-pointer focus:outline-none"
       />
     </label>
   );
