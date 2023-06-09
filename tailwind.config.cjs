@@ -9,6 +9,7 @@ module.exports = {
       white: "white",
       accent: "#4B6BFB",
       dark: "#181A2A",
+      semidark: "#242535",
     },
   },
   plugins: [],
