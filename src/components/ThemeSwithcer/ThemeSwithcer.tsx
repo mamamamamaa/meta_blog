@@ -8,9 +8,9 @@ type Theme = "dark" | "light";
 export const ThemeSwithcer = () => {
   const [theme, setTheme] = useState<Theme>("light");
 
-  const typeOfTheme = theme === "light";
-  const background = typeOfTheme ? style.lightBoxBg : style.darkBoxBg;
-  const icon = typeOfTheme ? style.sunCircle : style.moonCircle;
+  const isLightTheme = theme === "light";
+  const background = isLightTheme ? style.lightBoxBg : style.darkBoxBg;
+  const icon = isLightTheme ? style.sunCircle : style.moonCircle;
 
   const handleChangeTheme = ({
     currentTarget,
@@ -18,7 +18,8 @@ export const ThemeSwithcer = () => {
     setTheme(currentTarget.value === "light" ? "dark" : "light");
 
   useEffect(() => {
-    document.documentElement.classList.add(theme);
+    if (!isLightTheme) document.documentElement.classList.toggle(theme);
+    else document.documentElement.className = "";
   }, [theme]);
 
   return (
