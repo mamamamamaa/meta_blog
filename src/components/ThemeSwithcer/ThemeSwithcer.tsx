@@ -1,11 +1,11 @@
 import style from "./ThemeSwithcer.module.css";
 
-import type { FunctionComponent, h } from "preact";
-import { useState } from "preact/hooks";
+import type { h } from "preact";
+import { useEffect, useState } from "preact/hooks";
 
 type Theme = "dark" | "light";
 
-export const ThemeSwithcer: FunctionComponent = ({ children }) => {
+export const ThemeSwithcer = () => {
   const [theme, setTheme] = useState<Theme>("light");
 
   const typeOfTheme = theme === "light";
@@ -16,6 +16,10 @@ export const ThemeSwithcer: FunctionComponent = ({ children }) => {
     currentTarget,
   }: h.JSX.TargetedEvent<HTMLInputElement, Event>) =>
     setTheme(currentTarget.value === "light" ? "dark" : "light");
+
+  useEffect(() => {
+    document.documentElement.classList.add(theme);
+  }, [theme]);
 
   return (
     <label class={`${style.box} ${background}`}>
