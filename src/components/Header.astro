@@ -4,12 +4,9 @@ import { SearchBar } from "./SearchBar/SearchBar";
 import { ThemeSwithcer } from "./ThemeSwithcer/ThemeSwithcer";
 ---
 
-<header class="py-8 flex items-center justify-between">
-  <Logo />
+<Logo />
+<div class="flex items-center gap-10">
+  <SearchBar client:load />
 
-  <div class="flex items-center gap-10">
-    <SearchBar client:load />
-
-    <ThemeSwithcer client:load />
-  </div>
-</header>
+  <ThemeSwithcer client:load />
+</div>
