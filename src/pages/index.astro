@@ -1,5 +1,19 @@
 ---
+import { getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const post = await getEntry("posts", "menofwar");
+
+const { Content } = await post.render();
 ---
 
-<BaseLayout title="MetaBlog">Home page</BaseLayout>
+<BaseLayout title="MetaBlog">
+  <img src={post.data.post_image} alt={post.data.title} />
+  <Content class="layout" style="font-size: 16px; color: #333;" />
+</BaseLayout>
+
+<style>
+  .layout h1 {
+    @apply text-secondary/800 dark:text-white;
+  }
+</style>

@@ -13,7 +13,7 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "",
+      mediaRoot: "cms",
       publicFolder: "public",
     },
   },
@@ -22,7 +22,7 @@ export default defineConfig({
       {
         name: "post",
         label: "Posts",
-        path: "content/posts",
+        path: "src/content/posts",
         fields: [
           {
             type: "string",
@@ -32,10 +32,50 @@ export default defineConfig({
             required: true,
           },
           {
+            type: "image",
+            name: "post_image",
+            label: "Post image",
+            required: true,
+            ui: {
+              validate(value) {
+                console.log(value);
+              },
+            },
+          },
+          {
+            label: "Tags",
+            name: "tags",
+            type: "string",
+            list: true,
+            options: [
+              {
+                value: "linux",
+                label: "Linux",
+              },
+              {
+                value: "web",
+                label: "Web development",
+              },
+              {
+                value: "crypto",
+                label: "Crypto",
+              },
+              {
+                value: "games",
+                label: "Games",
+              },
+            ],
+          },
+          {
             type: "rich-text",
             name: "body",
             label: "Body",
             isBody: true,
+          },
+          {
+            type: "datetime",
+            name: "date",
+            label: "Date",
           },
         ],
       },

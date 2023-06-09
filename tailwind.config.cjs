@@ -20,6 +20,7 @@ module.exports = {
       "secondary/400": "#97989F",
       "secondary/600": "#3B3C4A",
       "secondary/700": "#242535",
+      "secondary/800": "#181A2A",
       "secondary/900": "#141624",
       white: "white",
       accent: "#4B6BFB",

@@ -18,12 +18,12 @@
 
 .sunCircle {
     @apply left-[2px] duration-200;
-    background-image: url("/sunny.svg");
+    background-image: url("/ui/sunny.svg");
 }
 
 .moonCircle {
     @apply right-[2px] duration-200;
-    background-image: url("/moon.svg");
+    background-image: url("/ui/moon.svg");
 }
 
 .checkbox {

@@ -1,4 +1,4 @@
-import search from "/search.svg";
+import search from "/ui/search.svg";
 
 export const SearchBar = () => {
   return (
