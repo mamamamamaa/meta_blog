@@ -5,8 +5,14 @@ import { useEffect, useState } from "preact/hooks";
 
 type Theme = "dark" | "light";
 
+const THEME_KEY = "THEME";
+
 export const ThemeSwithcer = () => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const storageTheme = localStorage.getItem(THEME_KEY);
+  const initialTheme =
+    storageTheme === ("dark" || "light") ? storageTheme : "light";
+
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
   const isLightTheme = theme === "light";
   const background = isLightTheme ? style.lightBoxBg : style.darkBoxBg;
@@ -20,6 +26,8 @@ export const ThemeSwithcer = () => {
   useEffect(() => {
     if (!isLightTheme) document.documentElement.classList.toggle(theme);
     else document.documentElement.className = "";
+
+    localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
 
   return (

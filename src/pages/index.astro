@@ -9,7 +9,7 @@ const { Content } = await post.render();
 
 <BaseLayout title="MetaBlog">
   <img src={post.data.post_image} alt={post.data.title} />
-  <Content class="layout" style="font-size: 16px; color: #333;" />
+  <Content class="prose" style="font-size: 16px; color: #333;" />
 </BaseLayout>
 
 <style>
