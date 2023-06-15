@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import TagList from "./TagList.astro";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+
+const { post_image, tags, title, date } = post.data;
+---
+
+<article class="latestPost__article">
+  <img src={post_image} alt="post image" class="latestPost__image" />
+  <section class="latestPost__section">
+    <TagList tags={tags} />
+    <h1 class="latestPost__heading">{title}</h1>
+    <p class="latestPost__date">{date.toDateString()}</p>
+  </section>
+</article>
+
+<style>
+  .latestPost__article {
+    @apply flex flex-col justify-center relative mb-16;
+  }
+
+  .latestPost__image {
+    @apply rounded-xl max-h-[600px];
+  }
+
+  .latestPost__section {
+    @apply rounded-xl bg-white dark:bg-dark shadow-md dark:drop-shadow-[0px_12px_24px_-6px_rgba(254,254,255,0.604)] p-10 max-w-[600px] absolute -bottom-14 left-16;
+  }
+
+  .latestPost__heading {
+    @apply text-secondary/800 dark:text-white font-semibold text-4xl pb-6;
+  }
+
+  .latestPost__date {
+    @apply text-secondary/400 text-base;
+  }
+</style>

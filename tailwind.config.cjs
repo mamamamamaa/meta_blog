@@ -29,5 +29,5 @@ module.exports = {
       semidark: "#242535",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
