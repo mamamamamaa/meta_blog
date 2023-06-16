@@ -7,7 +7,7 @@ import PostList from "../components/PostList.astro";
 const posts = await getCollection("posts");
 
 const sortedPosts = [...posts].sort(
-  (post1, post2) => post1.data.date - post2.data.date
+  (post1, post2) => post2.data.date - post1.data.date
 );
 
 const [latestPost, ...otherPosts] = sortedPosts;

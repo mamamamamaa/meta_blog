@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TagList from "../../components/TagList.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+
+  return allPosts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const { post_image, tags, title, date } = post.data;
+
+const pageTitle = post.slug.toUpperCase();
+
+const { Content } = await post.render();
+---
+
+<BaseLayout title={pageTitle}>
+  <article class="max-w-[800px] mx-auto flex flex-col gap-8">
+    <div>
+      <TagList tags={tags} latest={true} />
+      <h1
+        class="font-semibold text-secondary/800 dark:text-white text-4xl mb-5"
+      >
+        {title}
+      </h1>
+      <p class="font-normal text-sm text-secondary/500">
+        {date.toDateString()}
+      </p>
+    </div>
+    <img src={post_image} alt="post image" class="w-full rounded-xl" />
+    <section
+      class="prose prose-xl pr prose-headings:dark:text-white prose-headings:mb-4 prose-headings:font-semibold prose-headings:text-secondary/800 prose-headings:text-2xl prose-h1:text-4xl prose-img:rounded-xl prose-p:text-secondary/600 prose-p:dark:text-secondary/300 prose-p:text-xl"
+    >
+      <Content />
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  /* .bodySection {
+    @apply;
+  } */
+</style>
