@@ -8,21 +8,24 @@ interface Props {
 
 const { post } = Astro.props;
 
+const { slug } = post;
 const { post_image, tags, title, date } = post.data;
 ---
 
 <article class="latestPost__article">
   <img src={post_image} alt="post image" class="latestPost__image" />
-  <section class="latestPost__section">
-    <TagList tags={tags} />
-    <h1 class="latestPost__heading">{title}</h1>
-    <p class="latestPost__date">{date.toDateString()}</p>
-  </section>
+  <a href={`/post/${slug}`}>
+    <section class="latestPost__section">
+      <TagList tags={tags} latest={true} />
+      <h1 class="latestPost__heading">{title}</h1>
+      <p class="latestPost__date">{date.toDateString()}</p>
+    </section>
+  </a>
 </article>
 
 <style>
   .latestPost__article {
-    @apply flex flex-col justify-center relative mb-16;
+    @apply flex flex-col justify-center relative mb-36;
   }
 
   .latestPost__image {

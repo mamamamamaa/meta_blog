@@ -1,15 +1,24 @@
 ---
 interface Props {
   tags: string[];
+  latest: boolean;
 }
 
-const { tags } = Astro.props;
+const { tags, latest } = Astro.props;
+
+const tagStyle = latest ? "latest" : "base";
 ---
 
-<ul class="flex gap-3 pb-4">
-  {
-    tags.map((tag) => (
-      <li class="bg-accent rounded-md py-1 px-2.5 text-white">{tag}</li>
-    ))
-  }
+<ul class="flex gap-3 pb-4 h-fit">
+  {tags.map((tag) => <li class={tagStyle}>{tag}</li>)}
 </ul>
+
+<style>
+  .base {
+    @apply bg-accentBg rounded-md py-1 px-2.5 text-accent;
+  }
+
+  .latest {
+    @apply bg-accent rounded-md py-1 px-2.5 text-white;
+  }
+</style>
