@@ -1,12 +1,14 @@
 ---
 import Logo from "./Logo.astro";
+import { Modal } from "./Modal/Modal";
 import { SearchBar } from "./SearchBar/SearchBar";
 import { ThemeSwithcer } from "./ThemeSwithcer/ThemeSwithcer";
 ---
 
 <Logo />
-<div class="flex items-center gap-10">
-  <SearchBar client:load />
-
+<div class="flex items-center gap-5 lg:gap-10">
+  <Modal client:visible>
+    <SearchBar client:visible />
+  </Modal>
   <ThemeSwithcer client:load />
 </div>
