@@ -30,6 +30,7 @@ module.exports = {
       accentBg: "rgba(75, 107, 251, 0.05)",
       dark: "#181A2A",
       semidark: "#242535",
+      transparent: "transparent",
     },
   },
   plugins: [require("@tailwindcss/typography")],
