@@ -1,11 +1,14 @@
 import { defineConfig } from "tinacms";
 
+const CLIENT_ID = process.env.TINA_CLIENT_ID || null;
+const TINA_TOKEN = process.env.TINA_TOKEN || null;
+
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
 export default defineConfig({
   branch,
-  clientId: import.meta.env.TINA_CLIENT_ID,
-  token: import.meta.env.TINA_TOKEN,
+  clientId: CLIENT_ID,
+  token: TINA_TOKEN,
 
   build: {
     outputFolder: "admin",
