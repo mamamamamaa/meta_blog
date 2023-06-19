@@ -9,7 +9,7 @@ const { tags, latest } = Astro.props;
 const tagStyle = latest ? "latest" : "base";
 ---
 
-<ul class="flex gap-3 pb-4 h-fit">
+<ul class="tagList">
   {tags.map((tag) => <li class={tagStyle}>{tag}</li>)}
 </ul>
 
@@ -20,5 +20,9 @@ const tagStyle = latest ? "latest" : "base";
 
   .latest {
     @apply bg-accent rounded-md py-1 px-2.5 text-white;
+  }
+
+  .tagList {
+    @apply flex gap-3 pb-4 h-fit;
   }
 </style>

@@ -12,25 +12,43 @@ const { slug } = post;
 const { post_image, tags, title, date } = post.data;
 ---
 
-<article
-  class="flex flex-col h-full p-4 bg-white dark:bg-secondary/800 rounded-xl border-[1px] border-secondary/100 dark:border-semidark"
->
-  <a href={`/post/${slug}`} class="flex flex-col h-full">
-    <img src={post_image} alt="post image" class="rounded-md mb-4" />
+<article class="postContainer">
+  <a href={`/post/${slug}`} class="postLink">
+    <img src={post_image} alt="post image" class="postImage" />
 
-    <div class="flex flex-col justify-between gap-5 h-full">
+    <div class="postInfoContainer">
       <div>
         <TagList tags={tags} latest={false} />
-        <h2
-          class="font-semibold text-xl h-fit text-secondary/800 dark:text-white"
-        >
-          {title}
-        </h2>
+        <h2 class="postTitle">{title}</h2>
       </div>
 
-      <p class="text-secondary/400 text-base">
-        {date.toDateString()}
-      </p>
+      <p class="postDate">{date.toDateString()}</p>
     </div>
   </a>
 </article>
+
+<style>
+  .postContainer {
+    @apply flex flex-col h-full p-4 bg-white dark:bg-secondary/800 rounded-xl border-[1px] border-secondary/100 dark:border-semidark;
+  }
+
+  .postLink {
+    @apply flex flex-col h-full;
+  }
+
+  .postImage {
+    @apply rounded-md mb-4;
+  }
+
+  .postInfoContainer {
+    @apply flex flex-col justify-between gap-5 h-full;
+  }
+
+  .postTitle {
+    @apply font-semibold text-xl h-fit text-secondary/800 dark:text-white;
+  }
+
+  .postDate {
+    @apply text-secondary/400 text-base;
+  }
+</style>

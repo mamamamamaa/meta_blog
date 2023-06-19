@@ -2,17 +2,41 @@
 import SimplifiedLogo from "./SimplifiedLogo.astro";
 ---
 
-<section
-  class="container xl:max-w-[1250px] mx-auto px-4 flex gap-[10px] items-center"
->
+<section class="footerContainer">
   <SimplifiedLogo />
-  <div class="font-plusJakarta text-secondary/600">
-    <h2 class="font-normal text-secondary/900 dark:text-white">
-      Meta<span class="font-extrabold">Blog</span>
+  <div class="infoSection">
+    <h2 class="logoPart1">
+      Meta<span class="logoPart2">Blog</span>
     </h2>
-    <p class="dark:text-secondary/300">
-      &copy; <span class="text-secondary/900 dark:text-white">mamamamamaa</span>
+    <p class="rights">
+      &copy; <span class="username">mamamamamaa</span>
       2023. All Rights Reserved.
     </p>
   </div>
 </section>
+
+<style>
+  .footerContainer {
+    @apply container xl:max-w-[1250px] mx-auto px-4 flex gap-[10px] items-center;
+  }
+
+  .infoSection {
+    @apply font-plusJakarta text-secondary/600;
+  }
+
+  .logoPart1 {
+    @apply font-normal text-secondary/900 dark:text-white;
+  }
+
+  .logoPart2 {
+    @apply font-extrabold;
+  }
+
+  .rights {
+    @apply dark:text-secondary/300;
+  }
+
+  .username {
+    @apply text-secondary/900 dark:text-white;
+  }
+</style>

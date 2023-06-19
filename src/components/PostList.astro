@@ -9,13 +9,9 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<section class="flex flex-col gap-8">
-  <h2 class="font-bold text-2xl text-secondary/800 dark:text-white">
-    Latest post
-  </h2>
-  <ul
-    class="grid grid-cols-1 items-stretch md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10"
-  >
+<section class="postsSection">
+  <h2 class="sectionHeading">Latest post</h2>
+  <ul class="postList">
     {
       posts.map((post) => (
         <li>
@@ -25,3 +21,17 @@ const { posts } = Astro.props;
     }
   </ul>
 </section>
+
+<style>
+  .postsSection {
+    @apply flex flex-col gap-8;
+  }
+
+  .sectionHeading {
+    @apply font-bold text-2xl text-secondary/800 dark:text-white;
+  }
+
+  .postList {
+    @apply grid grid-cols-1 items-stretch md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10;
+  }
+</style>

@@ -2,6 +2,7 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import type { FunctionComponent, h } from "preact";
 import { useEffect, useState } from "preact/hooks";
+import style from "./SearchBar.module.css";
 
 export const SearchBar: FunctionComponent = () => {
   const [posts, setPosts] = useState<CollectionEntry<"posts">[] | null>(null);
@@ -28,40 +29,36 @@ export const SearchBar: FunctionComponent = () => {
   }, []);
 
   return (
-    <section>
-      <label class="cursor-pointer hover:shadow duration-200">
+    <>
+      <label class={style.inputWrapepr}>
         <input
           type="text"
           value={query}
           onInput={handleChangeQuery}
           placeholder="Search by post title"
-          class="mb-5 w-full rounded bg-secondary/100 dark:bg-semidark dark:text-white py-2 pl-4 pr-9 cursor-pointer focus:outline-none"
+          class={style.input + " dark:bg-semidark dark:text-white"}
         />
       </label>
       {query && filteredPosts && (
         <>
-          <p class="text-secondary/800 dark:text-white font-semibold text-2xl pb-5">
-            Posts:
-          </p>
-          <ul class="flex flex-col gap-5">
+          <p class={style.posts + " dark:text-white"}>Posts:</p>
+          <ul class={style.postList}>
             {filteredPosts.map(({ data, slug }, idx) => (
               <li key={idx}>
                 <a
                   href={`/post/${slug}`}
-                  class="flex gap-5 items-center rounded-xl border-[1px] border-secondary/100 dark:border-semidark"
+                  class={style.postLink + " dark:border-semidark"}
                 >
                   <img
                     src={data.post_image}
                     alt="post image"
-                    class="w-1/3 rounded-xl"
+                    class={style.postImage}
                   />
                   <div>
-                    <h2 class="text-secondary/800 dark:text-white font-semibold text-2xl">
+                    <h2 class={style.postTitle + " dark:text-white"}>
                       {data.title}
                     </h2>
-                    <p class="text-secondary/400 text-base">
-                      {data.date.toDateString()}
-                    </p>
+                    <p class={style.postDate}>{data.date.toDateString()}</p>
                   </div>
                 </a>
               </li>
@@ -71,15 +68,13 @@ export const SearchBar: FunctionComponent = () => {
       )}
 
       {!query && (
-        <p class="text-secondary/400 text-base text-center">
+        <p class={style.notice}>
           Enter the title of the post in the input above
         </p>
       )}
       {filteredPosts?.length === 0 && (
-        <p class="text-secondary/400 text-base text-center">
-          There are no posts for this query
-        </p>
+        <p class={style.notice}>There are no posts for this query</p>
       )}
-    </section>
+    </>
   );
 };

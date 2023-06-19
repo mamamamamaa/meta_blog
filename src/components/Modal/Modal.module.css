@@ -1,5 +1,5 @@
 .openModalButton {
-    @apply rounded-md bg-secondary/100 dark:bg-semidark p-1 hover:shadow-md duration-300;
+    @apply rounded-md bg-secondary/100 p-1 hover:shadow-md duration-300;
 }
 
 .searchIcon {
@@ -11,5 +11,5 @@
 }
 
 .window {
-    @apply w-1/2 text-secondary/800 bg-white rounded-xl dark:text-white dark:bg-secondary/800 p-5 absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4;
+    @apply w-1/2 text-secondary/800 rounded-xl bg-white dark:text-white p-5 absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4;
 }
