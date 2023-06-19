@@ -2,6 +2,8 @@ import { useState } from "preact/hooks";
 import type { FunctionComponent } from "preact";
 import search from "/ui/search.svg";
 
+import style from "./Modal.module.css";
+
 export const Modal: FunctionComponent = ({ children }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
@@ -13,19 +15,13 @@ export const Modal: FunctionComponent = ({ children }) => {
       <button
         onClick={handleOpenSearchModal}
         type="button"
-        class="rounded-md bg-secondary/100 dark:bg-semidark p-1 hover:shadow-md duration-300"
+        class={style.openModalButton}
       >
-        <img src={search} alt="search icon" class="w-6" />
+        <img src={search} alt="search icon" class={style.searchIcon} />
       </button>
       {isOpen && (
-        <div
-          class="backdrop-blur-sm fixed top-0 z-10 left-0 w-screen h-screen"
-          onClick={handleCloseSearchModal}
-        >
-          <section
-            onClick={(e) => e.stopPropagation()}
-            class="w-1/2 text-secondary/800 bg-white rounded-xl dark:text-white dark:bg-secondary/800 p-5 absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4"
-          >
+        <div class={style.backdrop} onClick={handleCloseSearchModal}>
+          <section onClick={(e) => e.stopPropagation()} class={style.window}>
             {children}
           </section>
         </div>

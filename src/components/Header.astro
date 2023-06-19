@@ -6,9 +6,15 @@ import { ThemeSwithcer } from "./ThemeSwithcer/ThemeSwithcer";
 ---
 
 <Logo />
-<div class="flex items-center gap-5 lg:gap-10">
+<div class="headerContainer">
   <Modal client:visible>
     <SearchBar client:visible />
   </Modal>
   <ThemeSwithcer client:load />
 </div>
+
+<style>
+  .headerContainer {
+    @apply flex items-center gap-5 lg:gap-10;
+  }
+</style>
