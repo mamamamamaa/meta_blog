@@ -28,23 +28,58 @@ export const SearchBar: FunctionComponent = () => {
   }, []);
 
   return (
-    <>
+    <section>
       <label class="cursor-pointer hover:shadow duration-200">
         <input
           type="text"
           value={query}
-          onChange={handleChangeQuery}
+          onInput={handleChangeQuery}
           placeholder="Search by post title"
-          class="w-full rounded bg-secondary/100 dark:bg-semidark dark:text-white py-2 pl-4 pr-9 cursor-pointer focus:outline-none"
+          class="mb-5 w-full rounded bg-secondary/100 dark:bg-semidark dark:text-white py-2 pl-4 pr-9 cursor-pointer focus:outline-none"
         />
       </label>
       {query && filteredPosts && (
-        <div>
-          {filteredPosts.map((post) => (
-            <div>{post.data.title}</div>
-          ))}
-        </div>
+        <>
+          <p class="text-secondary/800 dark:text-white font-semibold text-2xl pb-5">
+            Posts:
+          </p>
+          <ul class="flex flex-col gap-5">
+            {filteredPosts.map(({ data, slug }, idx) => (
+              <li key={idx}>
+                <a
+                  href={`/post/${slug}`}
+                  class="flex gap-5 items-center rounded-xl border-[1px] border-secondary/100 dark:border-semidark"
+                >
+                  <img
+                    src={data.post_image}
+                    alt="post image"
+                    class="w-1/3 rounded-xl"
+                  />
+                  <div>
+                    <h2 class="text-secondary/800 dark:text-white font-semibold text-2xl">
+                      {data.title}
+                    </h2>
+                    <p class="text-secondary/400 text-base">
+                      {data.date.toDateString()}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
-    </>
+
+      {!query && (
+        <p class="text-secondary/400 text-base text-center">
+          Enter the title of the post in the input above
+        </p>
+      )}
+      {filteredPosts?.length === 0 && (
+        <p class="text-secondary/400 text-base text-center">
+          There are no posts for this query
+        </p>
+      )}
+    </section>
   );
 };

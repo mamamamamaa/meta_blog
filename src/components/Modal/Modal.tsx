@@ -24,7 +24,7 @@ export const Modal: FunctionComponent = ({ children }) => {
         >
           <section
             onClick={(e) => e.stopPropagation()}
-            class="text-secondary/800 bg-white rounded-xl dark:text-white dark:bg-secondary/800 p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="w-1/2 text-secondary/800 bg-white rounded-xl dark:text-white dark:bg-secondary/800 p-5 absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4"
           >
             {children}
           </section>
